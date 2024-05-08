@@ -1,92 +1,99 @@
-import { useState } from 'react';
-import Editor from '@monaco-editor/react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Editor } from '@monaco-editor/react';
+import * as monaco from 'monaco-editor'; // library to use monaco editor
 import { marked } from 'marked'; // library to convert markdown to HTML
+import snippets from './components/snippets';
+import plantilla from './components/plantillas';
 
-export default function App() {
   
-  const [contenido, setContenido] = useState('');
+  
+export default function App() {
 
+  const [contenido, setContenido] = useState('');
+    
+    
   const handleEditorChange = (value, event) => {
     setContenido(marked(value)); // convert markdown to HTML and update state
-  }
-  const onMount = (editor, monaco) => {
-    editor.focus();
-  }
+  };
 
-  const plantilla = `## Diagnósticos ingreso:
-1. Multípara de [x], [x] años
-2. Embarazo de [x] semanas por FUR
-3. Trabajo de parto fase activa
-4. IMC [x]
-5. Riesgo tromboembólico [x]
-
-## Diagnósticos egreso:
-1. Multípara de [x+1], [x] años
-2. Puérpera [x] días [parto vaginal/cesárea]
-
-## Procedimientos:
-- Parto PTVE ([x]/[x]/24 a las [x]:[x] horas), sin complicaciones. PN: [x] g, Talla [x] cm, APGAR [x]-[x]
-- Cesárea ([x]/[x]/24 a las [x]:[x] horas), sin complicaciones. PN: [x] g, Talla [x] cm, APGAR [x]-[x]
-
-## Medicamentos utilizados
-- Paracetamol 1 gr cada 8 horas vía oral
-- Ketoprofeno 50 mg cada 8 horas vía oral
-- Ampicilina según protocolo de profilaxis sepsis neonatal
-- Oxitocina según protocolo
-
-## Resumen:
-
-Usuaria de [x] años, multípara, cursando embarazo de [x] semanas por FUR. Consulta al servicio de urgencias por contracciones uterinas dolorosas [x] cada [x] minutos, [...]. Al examen físico se constata cuello uterino dilatado [x] cm, borramiento [x]%, centrado [...]. 
-Se decide ingreso por [...]. 
-
-Evoluciona [...]. Se asiste parto vaginal, finalizando embarazo el [x]/[x]/24 a las [x]:[x] horas, sin complicaciones. Se recibe recién nacido de sexo [x], Peso [x] g, Talla [x] cm, APGAR [x]-[x]. En puerperio evoluciona con buen manejo del dolor, con loquios hemáticos normales, logrando lactancia materna sin dificultades. Dada evolución favorable, se decide dar alta.
-
-## Condiciones de egreso:
-
-Hemodinamia estable, afebril, buen manejo del dolor, con loquios hemáticos normales, lactancia materna sin dificultades, [...].
-
-## Indicaciones al Alta
-
-**Generales**:
-  1. Reposo relativo, deambular en domicilio
-  2. Régimen habitual progresivo, preferir alimentos altos en fibra, hidratación con agua
-  3. Lactancia materna según indicación de pediatría
-  4. Abstinencia sexual por 40 días
-  5. Aseo genital con agua, no utilizar jabón 
-
-**Fármacos**:
   
-  1. Paracetamol 1 gr cada 8 horas por 3 días en caso de dolor
+const myTheme = {
+  base: 'vs-dark',
+  inherit: true,
+  rules: [{ background: '#000000', token: ''}],
+colors: {
+  'editor.background': '#251E07',
+  'editor.foreground': '#F7F4E0',
+  'editorLineNumber.foreground': '#F7F4E0',
+  'editorLineNumber.activeForeground': '#FCA0A0',
+  'editorCursor.foreground': '#B6FE70',
+  'editor.selectionBackground': '#4E4EFA',
+  'editor.inactiveSelectionBackground': '#7B7BFE',
+  'editor.selectionHighlightBackground': '#646465',
+  'editor.findMatchBackground': '#4E4EFA',
+  'editor.findMatchHighlightBackground': '#BBBEFF',
+  'editor.findRangeHighlightBackground': '#646465',
+  'editor.hoverHighlightBackground': '#847358',
+  'editor.lineHighlightBackground': '#494A24',
+  'editor.rangeHighlightBackground': '#608B8D',
+  'editorWhitespace.foreground': '#646465',
+  
 
-**Controles**:
-  1. Control en 5-7 días con matrona en su CESFAM, debe acudir con recién nacido y solicitar hora con anticipación
-  2. En caso de presentar irritabilidad marcada, rechazo a recién nacido, pena persistente o síntomas similares, acudir a su CESFAM para orientación y manejo.
-  3. Consultar en urgencias en caso de fiebre, sangrado vaginal abundante, dificultad respiratoria, vómitos que no permiten alimentarse, hinchazón y enrojecimiento de una o ambas mamas, aumento de volumen asociado a dolor en extremidades inferiores o dolor abdominal que no cede con analgesia.
 
-  `;  
+}
+};
+
+  const onMount = (editor, monaco ) => {
+    monaco.editor.defineTheme('myTheme', myTheme);
+    monaco.editor.setTheme('myTheme'); 
+    editor.focus();
+    editor.setValue(plantilla);
+
+    monaco.languages.registerCompletionItemProvider('markdown', {
+      // triggerCharacters: ['.'], // Trigger snippet on dot (can be customized)
+      provideCompletionItems: (model, position) => {
+            const suggestions = [];
+            for (const [key, value] of Object.entries(snippets)) {
+                suggestions.push({
+                    label: key,
+                    kind: value.kind,
+                    insertText: value.insertText,
+                    insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                    detail: value.detail,
+                    documentation: value.description
+                });
+            }
+            return { suggestions: suggestions };
+          }
+        });
+    /* registerSnippets();
+    console.log("snippet is registered");
+    console.log(monaco.languages.getLanguages()); */
+    
+  };
+  
+
+
 
   return (
     <div style={{display: 'flex'}}>
       <Editor
         height="100vh"
-        width="50vw"
+        width="50%"
         theme='vs-dark'
         defaultLanguage='markdown'
         onMount={onMount}
         onChange={handleEditorChange}
-
-        value={plantilla}
+        
         options={{
           wordWrap: 'on',
           
         }}
       />
       {/* Preview of Editor markdown */}
-      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '50vw', backgroundColor: 'black'}}>
-        <div style={{height: '100vh', width: '100%', backgroundColor: 'white', padding: '20px', overflow: 'auto'}}>
+        <div style={{height: '100vh', width: '50%', backgroundColor: 'white', padding: '0px', overflow: 'auto'}}>
           <div dangerouslySetInnerHTML={{__html: contenido}}></div>
         </div>
-      </div>
     </div>
   );
 }
