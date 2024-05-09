@@ -1,6 +1,4 @@
-
-
-const plantilla = `## Diagnósticos ingreso:
+## Diagnósticos ingreso:
 1. Multípara de [x], [x] años
 2. Embarazo de [x] semanas por FUR
 3. Trabajo de parto fase activa
@@ -35,19 +33,18 @@ Hemodinamia estable, afebril, buen manejo del dolor, con loquios hemáticos norm
 ## Indicaciones al Alta
 
 **Generales**:
-1. Reposo relativo, deambular en domicilio
-2. Régimen habitual progresivo, preferir alimentos altos en fibra, hidratación con agua
+1. Reposo relativo
+2. Régimen liviano
 3. Lactancia materna según indicación de pediatría
 4. Abstinencia sexual por 40 días
-5. Aseo genital con agua, no utilizar jabón 
+5. Aseo genital con agua, no utilizar jabón, secar con toques, no frotar
 
 **Fármacos**:
   
-1. Paracetamol 1 gr cada 8 horas por 3 días en caso de dolor
+1. Paracetamol 1 gr cada 8 horas por 5 días en caso de dolor
+2. Ketoprofeno 50 mg cada 8 horas por 3 días en caso de dolor
 
 **Controles**:
 1. Control en 5-7 días con matrona en su CESFAM, debe acudir con recién nacido y solicitar hora con anticipación
-  2. En caso de presentar irritabilidad marcada, rechazo a recién nacido, pena persistente o síntomas similares, acudir a su CESFAM para orientación y manejo.
-  3. Consultar en urgencias en caso de fiebre, sangrado vaginal abundante, dificultad respiratoria, vómitos que no permiten alimentarse, hinchazón y enrojecimiento de una o ambas mamas, aumento de volumen asociado a dolor en extremidades inferiores o dolor abdominal que no cede con analgesia.`;  
-
-export default plantilla;
+2. En caso de presentar irritabilidad marcada, rechazo a recién nacido, pena persistente o síntomas similares, acudir a su CESFAM para orientación y manejo.
+3. Consultar en urgencias en caso de síntomas de alarma tales como: dolor abdominal que no cede con analgesia, sangrado genital abundante, fiebre, dificultad respiratoria, u otros síntomas que estime deban recibir atención médica de urgencias.
