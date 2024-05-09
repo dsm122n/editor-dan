@@ -66,7 +66,7 @@ export default function App() {
     monaco.editor.defineTheme('myTheme', myTheme);
     monaco.editor.setTheme('myTheme'); 
     editor.focus();
-    
+    setContenido(marked(editor.getValue())); // convert markdown to HTML and update state
     
     monaco.languages.registerCompletionItemProvider('markdown', {
       // triggerCharacters: ['.'], // Trigger snippet on dot (can be customized)
