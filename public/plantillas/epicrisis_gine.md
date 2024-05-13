@@ -10,8 +10,8 @@
 2. Puérpera [x] días [parto vaginal/cesárea]
 
 ## Procedimientos:
-- Parto PTVE ([x]/[x]/24 a las [x]:[x] horas), sin complicaciones. PN: [x] g, Talla [x] cm, APGAR [x]-[x]
-- Cesárea ([x]/[x]/24 a las [x]:[x] horas), sin complicaciones. PN: [x] g, Talla [x] cm, APGAR [x]-[x]
+- Parto PTVE ([x]/[x]/24 a las [x]:[x] horas), sin complicaciones. PN: [x] g, Talla [x] cm, APGAR [x]-[x], sexo [x].
+- Cesárea ([x]/[x]/24 a las [x]:[x] horas), sin complicaciones. PN: [x] g, Talla [x] cm, APGAR [x]-[x], sexo [x].
 
 ## Medicamentos utilizados
 - Paracetamol 1 gr cada 8 horas vía oral
@@ -37,7 +37,7 @@ Hemodinamia estable, afebril, buen manejo del dolor, con loquios hemáticos norm
 2. Régimen liviano
 3. Lactancia materna según indicación de pediatría
 4. Abstinencia sexual por 40 días
-5. Aseo genital con agua, no utilizar jabón, secar con toques, no frotar
+5. Aseo genital con agua, no utilizar jabón, secar con toques, no frotar // Mantener herida operatoria limpia y seca. Asear con agua escurriendo, secar con toques (no frotar). 
 
 **Fármacos**:
   
