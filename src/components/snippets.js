@@ -85,14 +85,14 @@ const snippets = {
     'parto_vaginal': {
         kind: monaco.languages.CompletionItemKind.Snippet,
         insertText: [
-            '- Parto vaginal espontáneo (${1:fecha} a las ${2:hora}), sin complicaciones. PN: ${3:num} g, Talla ${4:num} cm, APGAR ${5:num}-${6:num}',
+            '- Parto vaginal espontáneo (${1:fecha} a las ${2:hora}), sin complicaciones. PN: ${3:num} g, Talla ${4:num} cm, APGAR ${5:num}-${6:num}, sexo ${7:ingrese}',
         ].join('\n'),
         detail: 'Parto PTVE'
     },
     'cesarea': {
         kind: monaco.languages.CompletionItemKind.Snippet,
         insertText: [
-            '- Cesárea (${1:fecha} a las ${2:hora}), sin complicaciones. PN: ${3:num} g, Talla ${4:num} cm, APGAR ${5:num}-${6:num}',
+            '- Cesárea (${1:fecha} a las ${2:hora}), sin complicaciones. PN: ${3:num} g, Talla ${4:num} cm, APGAR ${5:num}-${6:num}, sexo ${7:ingrese}',
         ].join('\n'),
         detail: 'Cesárea'
     },
@@ -204,7 +204,7 @@ const snippets = {
 2. Régimen liviano
 3. Lactancia materna según indicación de pediatría
 4. Abstinencia sexual por 40 días
-5. Aseo genital con agua, no utilizar jabón, secar con toques, no frotar
+5. Aseo genital con agua, no utilizar jabón, secar con toques, no frotar // Mantener herida operatoria limpia y seca. Asear con agua escurriendo, secar con toques.
 
 **Fármacos**:
   
@@ -214,7 +214,7 @@ const snippets = {
 **Controles**:
 1. Control en 5-7 días con matrona en su CESFAM, debe acudir con recién nacido y solicitar hora con anticipación
 2. En caso de presentar irritabilidad marcada, rechazo a recién nacido, pena persistente o síntomas similares, acudir a su CESFAM para orientación y manejo.
-3. Consultar en urgencias en caso de síntomas de alarma tales como: \${1:dolor abdominal que no cede con analgesia, sangrado genital abundante, fiebre, dificultad respiratoria, u otros síntomas que estime deban recibir atención médica de urgencias}.
+3. Consultar en urgencias en caso de síntomas de alarma tales como: \${1:dolor abdominal que no cede con analgesia, sangrado genital abundante, fiebre, u otros síntomas que estime deban recibir atención médica de urgencias}.
 `,
         detail: 'Plantilla de indicaciones'
     },
