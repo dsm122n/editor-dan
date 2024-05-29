@@ -5,6 +5,40 @@ import { marked } from 'marked'; // library to convert markdown to HTML
 import snippets from './components/snippets';
 
 
+// select tag for the user to choose a template
+function SeleccionPlantillas() {
+  // read file names from the plantillas directory
+  const [files, setFiles] = useState([]);
+  useEffect(() => {
+    async function fetchFiles(uri) {
+      const response = await fetch(uri);
+      console.log('esta es la respuesta');
+      console.log(response);
+      const data = await response.json();
+      setFiles(data);
+    }
+    fetchFiles('./plantillas/');
+    console.log('esta es la función select');
+    console.log(files);
+  });
+  const selectionStyle = {
+    width: '400px',
+    height: '30px',
+    fontSize: '16px',
+    margin: '5px',
+  };
+    return (
+        <div style={{width: '100vw', height: 'auto', padding: '0px', margin: '0px'}}>
+            <select style={selectionStyle}>
+                <option value="" disabled selected>Selecciona una plantilla</option>
+                {files.map((file) => (
+                    <option key={file} value={file}>{file}</option>
+                ))}
+            </select>
+        </div>
+    );
+}
+
 
 export default function App() {
 
@@ -62,7 +96,7 @@ export default function App() {
     setContenido(marked(value)); // convert markdown to HTML and update state
   };
   const onMount = (editor, monaco ) => {
-    
+    // console log of files from plantillas
     monaco.editor.defineTheme('myTheme', myTheme);
     monaco.editor.setTheme('myTheme'); 
     editor.focus();
@@ -95,24 +129,37 @@ export default function App() {
 
 
   return (
-    <div style={{display: 'flex'}}>
-      <Editor
-        height="100vh"
-        width="50%"
-        theme='vs-dark'
-        defaultLanguage='markdown'
-        onMount={onMount}
-        onChange={handleEditorChange}
-        value={md}
-        options={{
-          wordWrap: 'on',
-          
-        }}
-      />
-      {/* Preview of Editor markdown */}
-        <div style={{height: '100vh', width: '50%', backgroundColor: 'white', padding: '0px', overflow: 'auto'}}>
-          <div dangerouslySetInnerHTML={{__html: contenido}}></div>
-        </div>
+    <div className="App" style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+
+      <SeleccionPlantillas/>
+      <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', 
+        width: '100vw', height: 'auto', padding: '0px', margin: '0px'
+      }}>
+        <Editor
+          height='calc(100vh - 40px)'
+          padding='0px'
+          margin='0px'
+          width="49vw"
+          theme='vs-dark'
+          defaultLanguage='markdown'
+          onMount={onMount}
+          onChange={handleEditorChange}
+          value={md}
+          options={{
+            wordWrap: 'on',
+            
+          }}
+        />
+        {/* Preview of Editor markdown */}
+          <div style={{
+            height: 'calc(100vh - 40px)', 
+            width: '49vw', 
+            backgroundColor: 'white', 
+            padding: '0px', 
+            overflow: 'auto'}}>
+            <div dangerouslySetInnerHTML={{__html: contenido}}></div>
+          </div>
+      </div>
     </div>
   );
 }

@@ -36,6 +36,8 @@ const snippets = {
     
     },
 
+
+
     // síntomas comunes
     'contracciones_utrinas': {
         kind: monaco.languages.CompletionItemKind.Snippet,
@@ -77,9 +79,19 @@ const snippets = {
         insertText: 'sin otras complicaciones',
         detail: 'Sin otras complicaciones'
     },
+    'bcg': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'buenas condiciones generales',
+        detail: 'BCG'
+    },
     
 
-
+    // condiciones egreso normales
+    'condiciones_egreso_sano': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Hemodinamia estable, afebril, en buen estado general, ${1:buen manejo del dolor}, diuresis espontánea, mucosas hidratadas, bien perfundida a distal, abdomen ${2:levemente sensible a la palpación, sin signos de irritación peritoneal}, extremidades sin edema ni signos de trombosis venosa profunda.', 
+        detail: 'Condiciones de egreso sanas'
+    },
 
     // Procedimientos
     'parto_vaginal': {
@@ -95,6 +107,34 @@ const snippets = {
             '- Cesárea (${1:fecha} a las ${2:hora}), sin complicaciones. PN: ${3:num} g, Talla ${4:num} cm, APGAR ${5:num}-${6:num}, sexo ${7:ingrese}',
         ].join('\n'),
         detail: 'Cesárea'
+    },
+    'histerectomia': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            '- Histerectomía ${1:total/subtotal} vía ${2:laparoscópica}, sin complicaciones.',
+        ].join('\n'),
+        detail: 'Histerectomía'
+    },
+    'ht + salpingo': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            '- Histerectomía ${1:total + salpingectomía bilateral vía ${1:laparoscópica}, sin complicaciones.',
+        ].join('\n'),
+        detail: 'Histerectomía total + salpingectomía'
+    },
+    'ht + sob': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            '- Histerectomía ${1:total} + salpingooforectomía bilateral vía ${1:laparoscópica}, sin complicaciones.',
+        ].join('\n'),
+        detail: 'Histerectomía total + '
+    },
+    'ht + sob + resección': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            '- Histerectomía ${1:total} + salpingooforectomía bilateral + resección ${2:ganglionar}, sin complicaciones.',
+        ].join('\n'), 
+        detail: 'Histerectomía total + salpingooforectomía + resección'
     },
 
     // examenes
@@ -146,7 +186,17 @@ const snippets = {
         ].join('\n'),
         detail: 'Resumen puerpera'
     },
-
+    // Resumen historia clinica estándar
+    'resumen_hce': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            'Pciente de ${1:edad} años, con antecedentes descritos. ${2:Motivo de consulta}.',
+            'Al ingreso ${3:hallazgos}.',
+            'Se realiza ${4:procedimientos/tratamientos}',
+            'Evoluciona ${5:con hemodinamia estable, afebril, buen manejo del dolor, sin otros síntomas, sin complicaciones}. Dada evolución favorable se decide alta'
+        ].join('\n'),
+        detail: 'Resumen historia clínica estándar'
+    },
     // combo medicamentos partos 
     'combo_fco_parto': {
         kind: monaco.languages.CompletionItemKind.Snippet,
@@ -159,17 +209,29 @@ const snippets = {
         ].join('\n'),
         detail: 'Combo fármacos parto'
     },
+    'combo_fco_cirugia_electiva': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+        '- Cefazolina 2 gr vía endovenosa una vez',
+        '- Paracetamol ${1:1 gr} cada ${2:8 horas} ${3:ev}',
+        '- Ketoprofeno ${4:100 mg} cada ${5:8 horas} ${6:ev}',
+        '- Anestesia ${7:general/raquídea/epidural}',
+        '- Metoclopramida 10 mg vía endovenosa cada 8 horas',
+        ].join('\n'),
+        detail: 'Combo fármacos cirugía electiva'
+    },
+        
 
     // Fármacos
     'paracetamol_vo': {
         kind: monaco.languages.CompletionItemKind.Snippet,
-        insertText: 'Paracetamol 1 gr cada 8 horas vía oral por ${1:5} días ${2:en caso de dolor}',
+        insertText: 'Paracetamol 500 mg, 2 comprimidos vía oral cada 8 horas por ${1:5} días ${2:en caso de dolor}',
         description: 'Indicación paracetamol vía oral',
         detail: 'paracetamol vía oral'
     },
     'paracetamol_ev': {
         kind: monaco.languages.CompletionItemKind.Snippet,
-        insertText: 'Paracetamol 1 gr cada 8 horas vía endovenosa',
+        insertText: 'Paracetamol 1 g cada 8 horas vía endovenosa',
         description: 'Indicación paracetamol vía endovenosa',
         detail: 'paracetamol vía endovenosa'
     },
@@ -177,7 +239,7 @@ const snippets = {
 
     'ketoprofeno_vo': {
         kind: monaco.languages.CompletionItemKind.Snippet,
-        insertText: 'Ketoprofeno 50 mg cada 8 horas vía oral por ${1:3} días ${2:en caso de dolor}',
+        insertText: 'Ketoprofeno 50 mg, 1 cápsula vía oral cada 8 horas vía oral por ${1:3} días ${2:en caso de dolor}',
         description: 'Indicación ketoprofeno vía oral',
         detail: 'ketoprofeno vía oral'
     },
@@ -198,23 +260,22 @@ const snippets = {
     // Indicaciones
     'plantilla_indicaciones_gine': {
         kind: monaco.languages.CompletionItemKind.Snippet,
-        insertText: `
-**Generales**:
+        insertText: `**Generales**:
 1. Reposo relativo
 2. Régimen liviano
-3. Lactancia materna según indicación de pediatría
-4. Abstinencia sexual por 40 días
+\${1: 3. Lactancia materna según indicación de pediatría}
+4. Abstinencia sexual por \${2:40 días / 2 meses}
 5. Aseo genital con agua, no utilizar jabón, secar con toques, no frotar // Mantener herida operatoria limpia y seca. Asear con agua escurriendo, secar con toques.
 
 **Fármacos**:
   
-1. Paracetamol 1 gr cada 8 horas por 5 días en caso de dolor
-2. Ketoprofeno 50 mg cada 8 horas por 3 días en caso de dolor
+1. Paracetamol 500 mg, 2 comprimidos vía oral cada 8 horas por 5 días
+2. Ketoprofeno 50 mg, 1 cápsula vía oral cada 8 horas por 3 días en caso de dolor
 
 **Controles**:
-1. Control en 5-7 días con matrona en su CESFAM, debe acudir con recién nacido y solicitar hora con anticipación
-2. En caso de presentar irritabilidad marcada, rechazo a recién nacido, pena persistente o síntomas similares, acudir a su CESFAM para orientación y manejo.
-3. Consultar en urgencias en caso de síntomas de alarma tales como: \${1:dolor abdominal que no cede con analgesia, sangrado genital abundante, fiebre, u otros síntomas que estime deban recibir atención médica de urgencias}.
+1. \${3:Control en 5-7 días con matrona en su CESFAM, debe acudir con recién nacido y solicitar hora con anticipación}
+\${4:2. En caso de presentar irritabilidad marcada, rechazo a recién nacido, pena persistente o síntomas similares, acudir a su CESFAM para orientación y manejo.}
+3. Consultar en urgencias en caso de síntomas de alarma tales como: \${5:dolor abdominal que no cede con analgesia, sangrado genital abundante, fiebre, u otros síntomas que estime deban recibir atención médica de urgencias}.
 `,
         detail: 'Plantilla de indicaciones'
     },
@@ -240,7 +301,34 @@ const snippets = {
         insertText: 'Consultar en urgencias en caso de síntomas de alarma tales como: ${1:dolor abdominal que no cede con analgesia, sangrado genital abundante, fiebre, dificultad respiratoria, u otros síntomas que estime deban recibir atención médica de urgencias}.',
         description: 'Indicación de consulta en urgencias',
         detail: 'Consulta sos en urgencias'
-    }
+    },
+    // diagnósticos
+
+    'cacu': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Cáncer de cuello uterino',
+        detail: 'CACU'
+    },
+    'ca_endometrio': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Cáncer de endometrio',
+        detail: 'Cáncer de endometrio'
+    },
+    'nie': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Neoplasia intraepitelial de cérvix',
+        detail: 'NIE'
+    },
+    'lie':{
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Lesión intraepitelial de cérvix',
+        detail: 'LIE'
+    },
+    'cancer_mama': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Cáncer de mama',
+        detail: 'Cáncer de mama'
+    },
   };
 
 export default snippets;
