@@ -1,6 +1,56 @@
 import * as monaco from 'monaco-editor'; // library to use monaco editor
 
 const snippets = {
+    // Secciones
+
+    "remota": {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            '- Antecedentes médicos: ${1:Hipertensión arterial, Diabetes mellitus, }',
+            '- Fármacos: ${2:fcos por aquí}',
+            '- Antecedentes quirúrgicos: ${3:cesárea, apendicectomía}',
+            '- Alergias: ${4:niega}',
+            '- Hábitos: Tabaco (${5:+/-}), Alcohol (${6:+/-}), Drogas (${7:+/-})',
+            '- G${8:num} P${9:num} A${10:num}, ${11:num pv} partos vaginales, ${12:num pc} cesáreas',
+            '- Fecha de última regla: ${13:dd}/${14:mm}/${15:aaaa}',
+            '- ${16:Menarquia a los num años, ciclos 30/V}',
+            '- Anticoncepción: ${17:DIU, ACOS, Esterilización}'
+
+        ].join('\n'),
+        detail: 'Remota'
+    },
+    "hc_embarazo": {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            'Paciente de ${1:edad} años, con antecedente de ${2:antecedentes médicos}. Cursando embarazo de ${4:num} semanas por FUR. Consulta por ${5:cuadro de }.\n',
+            'Niega ${6:nauseas, vómitos, fiebre, disuria, tenesmo vesical, sangrado genital, dolor lumbar u otros síntomas}.'
+        ].join('\n'),
+        detail: 'Historia clínica embarazo' 
+    },
+    "hc_genérica": {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            'Paciente de ${1:edad} años, con antecedente de ${2:antecedentes médicos}. Consulta por ${3:cuadro de }.\n',
+            'Niega ${4:nauseas, vómitos, fiebre, disuria, tenesmo vesical, sangrado genital, dolor lumbar u otros síntomas}.'
+        ].join('\n'),
+        detail: 'Historia clínica genérica'
+    },
+
+    "EF_examen_físico": {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: [
+            '- SV: T° ${1:num}°C, FC ${2:num} lpm, PA ${3:num}/${4:num} mmHg, FR ${5:num} rpm, SatO2 ${6:num}%',
+            '- Mucosas ${7:hidratadas}, bien perfundida a distal',
+            '- Tórax: ${8:RR2TSS}, ${9:MP(+) SRA}',
+            '- Abdomen: ${10:Depresible}, ${11: indoloro a la palpación}, ${12: sin signos de irritación peritoneal}',
+            '- Extremidades: ${13: sin edema ni signos de trombosis venosa profunda}',
+            '- Especuloscopía: ${14: sin lesiones, sin sangrado}',
+            '- TV: ${15: cuello posterior, firme, cerrado}'
+        ].join('\n'),
+        detail: 'Examen físico'
+    },
+
+
     // Diagnósticos obste
     'dg_ingreso_egreso_gine': {
         kind: monaco.languages.CompletionItemKind.Snippet,
