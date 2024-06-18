@@ -8,13 +8,9 @@ const snippets = {
         insertText: [
             '- Antecedentes médicos: ${1:Hipertensión arterial, Diabetes mellitus, }',
             '- Fármacos: ${2:fcos por aquí}',
-            '- Antecedentes quirúrgicos: ${3:cesárea, apendicectomía}',
-            '- Alergias: ${4:niega}',
+            '- Alergias: ${3:niega}',
+            '- Antecedentes quirúrgicos: ${4:cirugías}',
             '- Hábitos: Tabaco (${5:+/-}), Alcohol (${6:+/-}), Drogas (${7:+/-})',
-            '- G${8:num} P${9:num} A${10:num}, ${11:num pv} partos vaginales, ${12:num pc} cesáreas',
-            '- Fecha de última regla: ${13:dd}/${14:mm}/${15:aaaa}',
-            '- ${16:Menarquia a los num años, ciclos 30/V}',
-            '- Anticoncepción: ${17:DIU, ACOS, Esterilización}'
 
         ].join('\n'),
         detail: 'Remota'
@@ -299,6 +295,65 @@ const snippets = {
         description: 'Indicación ketoprofeno vía endovenosa',
         detail: 'ketoprofeno vía endovenosa'
     },
+    
+    'ibuprofeno_vo_400': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Ibuprofeno 400 mg, 1 comprimido vía oral cada ${1:6} horas vía oral por ${2:5} días',
+        description: 'Indicación ibuprofeno vía oral',
+        detail: 'ibuprofeno vía oral'
+    },
+    'ibuprofeno_vo_600': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Ibuprofeno 600 mg, 1 comprimido vía oral cada 8 horas vía oral por ${1:5} días',
+        description: 'Indicación ibuprofeno vía oral',
+        detail: 'ibuprofeno vía oral'
+    },
+
+    'ondansetron_vo': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Ondansetron 8 mg, 1 comprimido vía oral cada 8 horas por ${1:3} días',
+        description: 'Indicación ondansetron vía oral',
+        detail: 'ondansetron vía oral'
+    },
+    
+    'metoclopramida_vo': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Metoclopramida 8 mg, 1 comprimido vía oral cada 8 horas por ${1:3} días 30 minutos previo a las comidas o antes de acostarse',
+        description: 'Indicación metoclopramida vía oral',
+        detail: 'metoclopramida vía oral'
+
+    },
+
+    'domperidona_vo': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Domperidona 10 mg, 1 comprimido vía oral cada 8 horas por ${1:3} días',
+        description: 'Indicación domperidona vía oral',
+        detail: 'domperidona vía oral'
+    },
+    'loratadina_vo': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Loratadina 10 mg, 1 comprimido vía oral cada 24 horas por ${1:7} días',
+        description: 'Indicación loratadina vía oral',
+        detail: 'loratadina vía oral'
+    },
+    'cetirizina_vo':{
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Cetirizina 10 mg, 1 comprimido vía oral cada 24 horas por ${1:7} días',
+        description: 'Indicación cetirizina vía oral',
+        detail: 'cetirizina vía oral'
+    },
+    'prednisona_vo': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Prednisona 10 mg, 3 comprimidos (tomar juntos) al día durante ${1:4} días',
+        description: 'Indicación prednisona vía oral',
+        detail: 'prednisona vía oral'
+    },
+    'omeprazol_vo': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: 'Omeprazol 20 mg, 1 comprimido vía oral en ayunas mientras toma prednisona',
+        description: 'Indicación omeprazol vía oral',
+        detail: 'omeprazol vía oral'
+    },
 
     'fcos_uso_habitual': {
         kind: monaco.languages.CompletionItemKind.Snippet,
@@ -306,6 +361,62 @@ const snippets = {
         description: 'Indicación fármacos de uso habitual',
         detail: 'Fármacos de uso habitual'
     },
+
+    // indicaciones por enfermedad según variegatus
+    'ind_rinofaringitis': {
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: ' - Ibuprofeno 400mg 1 comprimido cada 8 horas \n- Paracetamol 500 mg, 2 comprimidos vía oral cada 8 horas por ${1:5} días ${2:en caso de dolor}\n- Buena hidratación, debe ingerir al menos 2 litros de líquido al día, (agua, zumos, infusiones, gelatinas, etc).\n - ACUDIR NUEVAMENTE A URGENCIA si presenta: Empeoramiento del estado general, Dificultad para respirar  (respira muy deprisa, se le marcan las costillas, o se le hunda el pecho), Dolor torácico, Fiebre alta que no cede con antitérmicos\n'
+    },
+     'ind_cefalea':{
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: '- Naproxeno 500mg: 1 comprimido cada 12 horas  ( recuerde tomarlo lo antes posible, cuando esté empezando el dolor), por 3 días\n- Paracetamol 500 mg, 2 comprimidos vía oral cada 8 horas por ${1:5} días ${2:en caso de dolor}\n- Debe estar en un sitio tranquilo, sin ruidos, ni luz. Si el dolor es intenso, lo mejor es que se acueste. No es conveniente que vea la televisión mientras tenga dolor.\n - ACUDIR NUEVAMENTE A URGENCIA si presenta signos de empeoramiento como: alteración en la visión, debilidad de fuerza en brazos o piernas, dificultad para hablar, caminar o coordinar movimientos, fiebre, vómitos, convulsiones, dolor de cabeza muy intenso que no cede con analgésicos, u otro síntoma que estime deba recibir atención médica de urgencias\n',
+        description: 'Indicación cefalea',
+        detail: 'Cefalea'
+
+     },
+     'ind_gastroenteritis_aguda':{
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: `
+- Hidratación con sales de rehidratación oral tras cada episodio de vómito o diarrea (disolver 1 sobre en 1 litro de agua)
+- Comer alimentos blandos y cocidos, evitar alimentos grasos, picantes, fritos, lácteos, frutas y verduras crudas
+- Paracetamol 500 mg, 2 comprimidos cada 8 horas, si dolor, malestar o fiebre
+- Metoclopramida 10mg, 1 comprimido 30 minutos antes de comer si tiene nauseas o vómitos
+*** niños[- vómitos: 4 ml/kg tras cada episodio, max 250 ml y diarrea: 10 ml/kg tras cada episodio, max 250 ml 
+- Probióticos (Saccharomyces boulardii) 1 sobre al día por 10 días
+`,
+        description: 'Indicación gastroenteritis aguda',
+        detail: 'Gastroenteritis aguda'
+        },
+        'ind_uriticaria':{
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: `
+- Cetirizina 10 mg, 1 comprimido vía oral cada 24 horas por 7 días (si persisten síntomas, reiniciar y acudir a control)
+- Prednisona 10 mg, 3 comprimidos (tomar juntos) al día durante 4 días
+[- Cobefen (Betametasona 0.25 mg + dexclorfeniramina 2 mg) 1 comprimido cada 12 horas por 5 días]
+- Evitar rascado de la piel
+- ACUDIR NUEVAMENTE A URGENCIA si presenta: dificultad para respirar, dolor torácico, fiebre, u otros síntomas que estime deban recibir atención médica de urgencias
+- Control en CESFAM en 5-7 días para evaluar respuesta y requerimiento de continuar estudio
+`,
+            description: 'Indicación urticaria',
+            detail: 'Urticaria'
+        },
+
+        'decalaje_prednisona':{
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: `
+Inicialmente: PREDNISONA 10 mg, 3 comprimidos (tomar juntos) al día durante 4 días
+
+Después: PREDNISONA 10 mg, 2 comprimidos (tomar juntos) al día durante 4 días
+
+Después: PREDNISONA 10 mg, 1 comprimido  al día durante 4 días  y suspender
+
+OMEPRAZOL 20 mg: 1 comprimido al día en ayunas mientras toma PREDNISONA`,
+            description: 'Indicación decalaje prednisona',
+            detail: 'Decalaje prednisona'
+        
+        },
+
+
 
     // Indicaciones
     'plantilla_indicaciones_gine': {
@@ -348,7 +459,7 @@ const snippets = {
     },
     'sos':{
         kind: monaco.languages.CompletionItemKind.Snippet,
-        insertText: 'Consultar en urgencias en caso de síntomas de alarma tales como: ${1:dolor abdominal que no cede con analgesia, sangrado genital abundante, fiebre, dificultad respiratoria, u otros síntomas que estime deban recibir atención médica de urgencias}.',
+        insertText: 'Consultar en urgencias en caso de síntomas de alarma tales como: ${1:dolor abdominal que no cede con analgesia, dificultad respiratoria, fiebre, persistencia o exacerbación de síntomas, u otros síntomas que estime deban recibir atención médica de urgencias}.',
         description: 'Indicación de consulta en urgencias',
         detail: 'Consulta sos en urgencias'
     },
