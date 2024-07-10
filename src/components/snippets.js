@@ -490,6 +490,230 @@ OMEPRAZOL 20 mg: 1 comprimido al día en ayunas mientras toma PREDNISONA`,
         insertText: 'Cáncer de mama',
         detail: 'Cáncer de mama'
     },
+    'ctrl_hipot4':{
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: `Hipotiroidismo dg hace \${1:num} años 
+Tratamiento actual: Levotiroxina \${2:dosis} mcg/día 
+
+Síntomas y signos: Intolerancia al frío \${4:(-)}, Constipación \${5:(-)}, Piel seca \${6:(-)}, Debilidad muscular proximal \${7:(-)}, Caída de pelo o pelo quebradizo \${8:(-)}, hipermenorrea \${9:(-)}, aumento de peso leve \${10:(-)}, sd túnel carpiano \${11:(-})
+
+Síntomas depresivos \${12:(-)}, astenia \${13:(-)}, somnolencia \${14:(-)}, bradipsiquia \${15:(-})
+
+Signos sugerentes de otras enfermedades autoinmunes: vitíligo \${16:(-)}, acantosis nigricans, DM1 \${17:(-})
+
+Examen físico 
+Tiroides: \${18: No palpable, consistencia sin alteraciones, no palpo nódulos} 
+Bien hidratado y perfundido.
+Piel sin lesiones. Yugulares no ingurgitadas a 30°.
+Cardiaco: RR2TSS.
+Pulmonar: MP(+) SRA.
+Abdomen: BDI, RHA(+), no palpo masas ni visceromegalias, sin signos de irritación peritoneal.
+EEII: Pulsos periféricos simétricos. Sin edema ni signos de TVP.
+
+Exámenes: 
+
+Planes
+1.Educación sobre patología y adherencia a tratamiento 
+2. Educación sobre la ingesta de levotiroxina en ayunas, distanciado de medicamentos que interfieren en su absorción (calcio, fierro, omeprazol). 
+3. Solicito exámenes para próximo control: TSH, T4L  
+4. Próximo control morbilidad Hipotiroidismo: 
+Nutricionista:
+Médico:
+5. Educación síntomas de alarma y consulta en servicio de urgencias SOS
+6. Se extiende receta por 3 meses 
+
+        `,
+        detail: 'Plantilla hipotiroidismo control'        
+    },
+    'ctrl_cv':{
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText: `Hospitalizaciones: ACV (-), IAM (-), SHH (-)
+Vacunas: Influenza  - covid (-)
+Hábitos: OH (-), TBQ (-), drogas (-)
+Actividad deportiva (-) Alimentación sana (-)
+Adherencia a fármacos (-) Adherencia a dieta hiposódica (-)
+
+Síntomas: 
+IC: Disnea de esfuerzos (-), angina (-), ortopnea (-), DPN (-), edema EEII (-).
+DM: polidipsia (-), poliuria (-), polifagia (-), baja de peso (-) Neuropatía DM (-) 
+
+Examen físico:
+
+
+Planes:
+1. Educación sobre patologías, importancia de mantener adherencia a controles, tratamiento farmacológico y hábitos de vida saludable, alimentación balanceada y actividad física mínimo 150 minutos/semana 
+2. Solicito Fondo de Ojo  y para próximo control Exámenes FALTANTES  
+4. Próximo control Programa Cardiovascular: 
+5. Educación síntomas de alarma y consulta en servicio de urgencias SOS
+6. Se extiende receta por 6 meses 
+            `,
+            detail: 'Plantilla control cardiovascular'        
+        },
+        'ctrl_sm':{
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: `A. Psiquiátricos: 
+Adherencia a tratamiento \${1:(-)}
+Adherencia a psicoterapia \${2:(-)}
+
+Motivo de consulta en SM: 
+
+- Familia: 
+- Red de apoyo:
+- Ocupación:  
+
+Síntomas
+- Ánimo:  
+- Hábitos de sueño: 
+- Apetito: 
+- Síntomas físicos: 
+- Limitación de AVD: 
+- Actividades recreativas: 
+- Expectativas del tratamiento: 
+
+EXAMEN MENTAL 
+APARIENCIA ACORDE A EDAD BIOLÓGICA. SIN ALTERACIÓN PSICOMOTORA.
+COOPERADOR. 
+CONTENIDO DE DISCURSO CON IDEAS DE TRISTEZA, SIN IDEAS DE RUINA.
+ESTRUCTURA DEL PENSAMIENTO NORMAL. 
+ESTADO DE CONCIENCIA: ALERTA.
+ESTADO DE ORIENTACIÓN: PERSONA (+), TIEMPO (+), Y LUGAR (+).
+ESTADO DE SENSOPERCEPCIÓN: ALUCINACIONES (-).
+MEMORIA: SIN ALTERACIONES.
+ANGUSTIA (-)
+LLANTO ACTUAL: NO
+SIN IDEACIÓN SUICIDA ACTUAL. INSIGHT PARCIAL. 
+
+Planes:
+1. educación sobre patología, importancia de mantener adherencia a controles con psicóloga y médico, además del tratamiento con fármacos 
+2. educación de higiene del sueño, hábitos de vida saludable, alimentación balanceada y actividad física mínimo 150 minutos/semana 
+2. próximo control programa salud mental
+psicóloga en 6 meses
+médico en 3 meses 
+4. educación síntomas de alarma y consulta en servicio de urgencias sos
+5. se extiende receta por 6 meses 
+`,
+            detail: 'Plantilla control salud mental'        
+        },
+
+        // controles niño sano
+               
+        'dsm_1_mes':{
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: `
+            https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-3.pdf
+            https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-4.pdf
+DSM 1 mes
+1. Motor: Aprieta el dedo índice del examinador \${1:(+)}, Movimiento de cabeza en posición prona \${2:(+)}
+2. Lenguaje:  Reacciona al sonido de la campanilla \${3:(+)}
+3. Social: Fija la mirada en el rostro del animador \${4:(+)}
+4. Coordinación: Sigue con la vista la argolla (ángulo de 90°) \${5:(+)}
+`,
+detail: 'desarrollo psicomotor 1 mes'
+},
+
+'dsm_2_meses':{
+    kind: monaco.languages.CompletionItemKind.Snippet,
+    insertText: `
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-3.pdf
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-4.pdf
+    DSM 2 meses
+1. Motor: Intenta controlar la cabeza al ser llevado a posición sentada \${1:(+)}
+2. Lenguaje:  Vocaliza dos sonidos diferentes \${3:(+)}
+3. Social: Vocaliza en respuesta a la sonrisa y conversación del examinador \${4:(+)}, Mímica en respuesta al rostro del examinador \${5:(+)}
+4. Coordinación: Reacciona ante el desaparecimiento de la cara del examinador \${6:(+)}
+`,
+detail: 'desarrollo psicomotor 2 meses'
+},
+'dsm_3_meses':{
+    kind: monaco.languages.CompletionItemKind.Snippet,
+    insertText: `
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-3.pdf
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-4.pdf
+DSM 3 meses
+1. Motor: Mantiene la cabeza erguida al ser llevado a posición sentada \${1:(+)}
+2. Lenguaje:  Vocalización prolongada \${3:(+)}
+3. Social: Sonríe en respuesta a la sonrisa  del examinador \${4:(+)}
+4. Coordinación: Gira la cabeza al sonido de la campanilla \${5:(+)}, Sigue con la vista la argolla (ángulo de 180°) \${6:(+)}
+`,
+detail: 'desarrollo psicomotor 2 meses'
+},
+
+
+'dsm_4_meses':{
+    kind: monaco.languages.CompletionItemKind.Snippet,
+    insertText: `
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-3.pdf
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-4.pdf
+DSM 4 meses
+1. Motor: En posición prona se levanta a sí mismo \${1:(+)}, Levanta la cabeza y hombros al ser llevado a posición sentada \${2:(+)}
+2. Lenguaje y social:  Ríe a carcajadas \${3:(+)}
+3. Coordinación: La cabeza sigue la cuchara que desaparece \${4:(+)}, Gira la cabeza al sonido de la campanilla \${5:(+)}
+`,
+detail: 'desarrollo psicomotor 4 meses'
+},
+'dsm_5_meses':{
+    kind: monaco.languages.CompletionItemKind.Snippet,
+    insertText: `
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-3.pdf
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-4.pdf
+DSM 5 meses
+1. Motor: Tracciona hasta lograr la posición sentada \${1:(+)}, Se mantiene sentado con leve apoyo \${2:(+)}
+2. Lenguaje y social: Vuelve la cabeza hacia quien le habla \${3:(+)}
+3. Coordinación: Palpa el borde de la mesa \${4:(+)}, Intenta prehensión de la argolla \${5:(+)}
+`,
+detail: 'desarrollo psicomotor 5 meses'
+},
+'dsm_6_meses':{
+    kind: monaco.languages.CompletionItemKind.Snippet,
+    insertText: `
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-3.pdf
+    https://www.minsal.cl/wp-content/uploads/2021/12/Cap%C3%ADtulo-4.pdf
+DSM 6 meses
+1. Motor: Se mantiene sentado solo, 6 c/u momentáneamente \${1:(+)}
+2. Lenguaje y social: Vocaliza cuando se le habla \${2:(+)}
+3. Coordinación: Vuelve la cabeza hacia la cuchara caída \${3:(+)}, Coge la argolla \${4:(+)}, Coge el cubo \${5:(+)}
+`,
+detail: 'desarrollo psicomotor 6 meses'
+},
+
+'reflejos_arcaicos':{
+    kind: monaco.languages.CompletionItemKind.Snippet,
+    insertText: `
+- Marcha automática: \${1:(+)}
+- Moro: \${2:(+)}
+- Reflejo de búsqueda: \${3:(+)}
+- Reflejo de succión: \${4:(+)}
+- Prensión palmar: \${5:(+)}
+- Prensión plantar: \${6:(+)}
+- Gallant: \${7:(+)}
+- Espadachin: \${8:(+)}
+- Babinski: \${9:(+)}
+
+| Reflejo                | Descripción                                                                                   |
+|------------------------|------------------------------------------------------------------------------------------------|
+| marcha automática      | 4 a 6 semanas aprox                                                                            |
+| Moro                   | 4-6 meses                                                                                      |
+| reflejo de búsqueda    | 3-4 meses (disminución gradual hasta max 3 meses)                                              |
+| reflejo de succión     | 3-4 meses (disminución gradual, superponiéndose con succión voluntaria)                        |
+| prensión palmar        | disminución gradual, desaparece por completo poco antes de los 6 meses                         |
+| prensión plantar       | 10 a 18 meses meses, poco antes de que logre marcha libre (intenso los primeros 6 meses, disminución gradual hasta lograr apoyo plantar) |
+| gallant (trunk incurvation) | 4 meses                                                                                      |
+| espadachin             | 5-7 meses                                                                                      |
+| Babinski               | 2 años                                                                                        |
+
+`,
+detail: 'Reflejos arcaicos'
+},
+
+        'prevencion_accidentes_niño_sano':
+        {
+            kind: monaco.languages.CompletionItemKind.Snippet,
+            insertText: `
+1. Educación sobre prevención de accidentes: Intoxicaciones, quemaduras, caídas, asfixia, accidentes de tránsito
+            `,
+            detail: 'prevención de accidentes niño sano'
+        }
+       
   };
 
 export default snippets;

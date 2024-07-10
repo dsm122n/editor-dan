@@ -132,7 +132,7 @@ export default function App() {
     <div className="App" style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
 
       <SeleccionPlantillas/>
-      <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', 
+      <div style={{display: 'flex', flexDirection: 'col', flexWrap: 'wrap', 
         width: '100vw', height: 'auto', padding: '0px', margin: '0px'
       }}>
         <Editor
